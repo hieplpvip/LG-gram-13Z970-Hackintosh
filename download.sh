@@ -18,6 +18,20 @@ function download_github()
     echo
 }
 
+# download release from RehabMan bitbucket
+function download_RHM()
+# $1 is subdir on rehabman bitbucket
+# $2 is prefix of zip file name
+{
+    echo "downloading $2:"
+    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt https://bitbucket.org/RehabMan/$1/downloads/
+    local url=https://bitbucket.org`grep -o -m 1 "/RehabMan/$1/downloads/$2.*\.zip" /tmp/com.hieplpvip.download.txt|perl -ne 'print $1 if /(.*)\"/'`
+    echo $url
+    curl $curl_options --output "$2.zip" "$url"
+    rm /tmp/com.hieplpvip.download.txt
+    echo
+}
+
 rm -rf download && mkdir ./download
 cd ./download
 
@@ -34,10 +48,11 @@ download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
 download_github "PMheart/LiluFriend" "RELEASE" "PMheart-LiluFriend.zip"
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
+download_RHM os-x-null-ethernet RehabMan-NullEthernet
 
 cd ..
 
-KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|Fixup"
+KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Fixup"
 
 function check_directory
 {
