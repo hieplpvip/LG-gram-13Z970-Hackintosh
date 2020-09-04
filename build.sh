@@ -20,5 +20,8 @@ $IASL build/ACPI/SSDT-XOSI.aml $SRCACPI/SSDT-XOSI.dsl
 # Copy UEFI Drivers
 cp -r src/Drivers build/Drivers
 
+# Copy kexts
+cp -r download/kexts build/Kexts
+
 # Copy OpenCore config
 cp src/config.plist build/config.plist
