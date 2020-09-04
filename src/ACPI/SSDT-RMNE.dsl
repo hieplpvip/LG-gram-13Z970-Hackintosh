@@ -21,4 +21,3 @@ DefinitionBlock("", "SSDT", 2, "HIEP", "RMNE", 0)
         }
     }
 }
-
