@@ -10,7 +10,7 @@ function download_github()
 # $3 is file name to rename to
 {
     echo "downloading `basename $3 .zip`:"
-    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt "https://github.com/$1"
+    curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt "https://github.com/$1/releases/latest"
     local url=https://github.com`grep -o -m 1 "/.*$2.*\.zip" /tmp/com.hieplpvip.download.txt`
     echo $url
     curl $curl_options --output "$3" "$url"
@@ -23,18 +23,21 @@ cd ./download
 
 # download kexts
 mkdir ./zips && cd ./zips
-download_github "acidanthera/Lilu/releases" "RELEASE" "acidanthera-Lilu.zip"
-download_github "acidanthera/AppleALC/releases" "RELEASE" "acidanthera-AppleALC.zip"
-download_github "acidanthera/HibernationFixup/releases" "RELEASE" "acidanthera-HibernationFixup.zip"
-download_github "acidanthera/VirtualSMC/releases" "RELEASE" "acidanthera-VirtualSMC.zip"
-download_github "acidanthera/VoodooPS2/releases" "RELEASE" "acidanthera-VoodooPS2.zip"
-download_github "acidanthera/WhateverGreen/releases" "RELEASE" "acidanthera-WhateverGreen.zip"
-download_github "lvs1974/CpuTscSync/releases" "RELEASE" "lvs1974-CpuTscSync.zip"
-download_github "PMheart/LiluFriend/releases" "RELEASE" "PMheart-LiluFriend.zip"
+download_github "acidanthera/Lilu" "RELEASE" "acidanthera-Lilu.zip"
+download_github "acidanthera/AppleALC" "RELEASE" "acidanthera-AppleALC.zip"
+download_github "acidanthera/HibernationFixup" "RELEASE" "acidanthera-HibernationFixup.zip"
+download_github "acidanthera/NVMeFix" "RELEASE" "acidanthera-NVMeFix.zip"
+download_github "acidanthera/VirtualSMC" "RELEASE" "acidanthera-VirtualSMC.zip"
+download_github "acidanthera/VoodooPS2" "RELEASE" "acidanthera-VoodooPS2.zip"
+download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
+download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
+download_github "PMheart/LiluFriend" "RELEASE" "PMheart-LiluFriend.zip"
+download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
+download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
 
 cd ..
 
-KEXTS="AppleALC|WhateverGreen|Lilu|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooPS2Controller|CpuTscSync|Fixup"
+KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|Fixup"
 
 function check_directory
 {
