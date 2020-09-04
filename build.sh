@@ -9,6 +9,7 @@ rm -rf build && mkdir build
 mkdir build/ACPI
 $IASL build/ACPI/SSDT-DMAC.aml $SRCACPI/SSDT-DMAC.dsl
 $IASL build/ACPI/SSDT-EC-USBX.aml $SRCACPI/SSDT-EC-USBX.dsl
+$IASL build/ACPI/SSDT-GPRW.aml $SRCACPI/SSDT-GPRW.dsl
 $IASL build/ACPI/SSDT-MEM2.aml $SRCACPI/SSDT-MEM2.dsl
 $IASL build/ACPI/SSDT-PLUG.aml $SRCACPI/SSDT-PLUG.dsl
 $IASL build/ACPI/SSDT-PMCR.aml $SRCACPI/SSDT-PMCR.dsl

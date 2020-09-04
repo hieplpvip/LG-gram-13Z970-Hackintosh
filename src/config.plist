@@ -26,6 +26,12 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
+				<string>SSDT-GPRW.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
 				<string>SSDT-MEM2.aml</string>
 			</dict>
 			<dict>
@@ -128,6 +134,16 @@
 				<data>U0FUMA==</data>
 				<key>Replace</key>
 				<data>U0FUQQ==</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>rename Method(GPRW,2,N) to XPRW, pair with SSDT-GPRW.aml</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>R1BSVwI=</data>
+				<key>Replace</key>
+				<data>WFBSVwI=</data>
 			</dict>
 		</array>
 		<key>Quirks</key>
