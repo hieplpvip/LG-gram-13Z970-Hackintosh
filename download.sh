@@ -52,7 +52,7 @@ download_RHM os-x-null-ethernet RehabMan-NullEthernet
 
 cd ..
 
-KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Fixup"
+KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Fixup"
 
 function check_directory
 {
