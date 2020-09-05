@@ -193,6 +193,16 @@
 				<key>Replace</key>
 				<data>WUJTVAA=</data>
 			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Set Mutex BATM SyncLevel 0x01 to 0x0</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>AUJBVE0B</data>
+				<key>Replace</key>
+				<data>AUJBVE0A</data>
+			</dict>
 		</array>
 		<key>Quirks</key>
 		<dict>
