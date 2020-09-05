@@ -7,6 +7,8 @@ rm -rf build && mkdir build
 
 # Build ACPI
 mkdir build/ACPI
+$IASL build/ACPI/SSDT-ALSD.aml $SRCACPI/SSDT-ALSD.dsl
+$IASL build/ACPI/SSDT-BATT.aml $SRCACPI/SSDT-BATT.dsl
 $IASL build/ACPI/SSDT-DMAC.aml $SRCACPI/SSDT-DMAC.dsl
 $IASL build/ACPI/SSDT-EC-USBX.aml $SRCACPI/SSDT-EC-USBX.dsl
 $IASL build/ACPI/SSDT-GPRW.aml $SRCACPI/SSDT-GPRW.dsl

@@ -14,6 +14,18 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
+				<string>SSDT-ALSD.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-BATT.aml</string>
+			</dict>
+			<dict>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
 				<string>SSDT-DMAC.aml</string>
 			</dict>
 			<dict>
@@ -150,6 +162,36 @@
 				<data>R1BSVwI=</data>
 				<key>Replace</key>
 				<data>WFBSVwI=</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>rename Method(XBIF,0,N) to YBIF, pair with SSDT-BATT.aml</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>WEJJRgA=</data>
+				<key>Replace</key>
+				<data>WUJJRgA=</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>rename Method(XBIX,0,N) to YBIX, pair with SSDT-BATT.aml</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>WEJJWAA=</data>
+				<key>Replace</key>
+				<data>WUJJWAA=</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>rename Method(XBST,0,N) to YBST, pair with SSDT-BATT.aml</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Find</key>
+				<data>WEJTVAA=</data>
+				<key>Replace</key>
+				<data>WUJTVAA=</data>
 			</dict>
 		</array>
 		<key>Quirks</key>
