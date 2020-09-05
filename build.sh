@@ -22,10 +22,11 @@ $IASL build/ACPI/SSDT-SBUS-MCHC.aml $SRCACPI/SSDT-SBUS-MCHC.dsl
 $IASL build/ACPI/SSDT-XOSI.aml $SRCACPI/SSDT-XOSI.dsl
 
 # Copy UEFI Drivers
-cp -r src/Drivers build/Drivers
+cp -R src/Drivers build/Drivers
 
 # Copy kexts
-cp -r download/kexts build/Kexts
+cp -R download/kexts build/Kexts
+cp -R src/Kexts/* build/Kexts/
 
 # Copy OpenCore config
 cp src/config.plist build/config.plist
