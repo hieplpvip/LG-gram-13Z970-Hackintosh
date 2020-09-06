@@ -30,3 +30,9 @@ cp -R src/Kexts/* build/Kexts/
 
 # Copy OpenCore config
 cp src/config.plist build/config.plist
+
+# Replace SMBIOS
+. ./smbios.txt
+sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
+          -e "s/Serial_PLACEHOLDER/$SystemSerialNumber/" \
+          -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" build/config.plist
