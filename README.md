@@ -12,6 +12,6 @@
 
 ## Instructions
 
-- Follow this [guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#generate-a-new-serial) to generate a new serial number and put that in `smbios.txt`
+- Follow this [guide](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#generate-a-new-serial) to generate a new serial number and put that in `src/smbios.txt`
 - Run `./download.sh` to download necessary kernel extensions
 - Run `.build.sh` to build OpenCore config and ACPI patches

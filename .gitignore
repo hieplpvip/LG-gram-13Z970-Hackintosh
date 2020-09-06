@@ -1,4 +1,4 @@
 .DS_Store
-smbios.txt
 build
 download
+src/smbios.txt
