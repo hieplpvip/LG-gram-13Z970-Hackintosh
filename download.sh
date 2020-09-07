@@ -46,13 +46,14 @@ download_github "BAndysc/VoodooPS2" "RELEASE" "BAndysc-VoodooPS2.zip"
 download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
 download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
 download_github "PMheart/LiluFriend" "RELEASE" "PMheart-LiluFriend.zip"
+download_github "usr-sse2/Black80211-Catalina" "alpha" "usr-sse2-Black80211-Catalina.zip"
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
 download_RHM os-x-null-ethernet RehabMan-NullEthernet
 
 cd ..
 
-KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Fixup"
+KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|Fixup"
 
 function check_directory
 {
@@ -90,6 +91,15 @@ function unzip_kext
     check_directory $out/Kexts/*.kext
     if [ $? -ne 0 ]; then
         for kext in $out/Kexts/*.kext; do
+            kextname="`basename $kext`"
+            if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
+                cp -R $kext ../kexts
+            fi
+        done
+    fi
+    check_directory $out/Catalina/*.kext
+    if [ $? -ne 0 ]; then
+        for kext in $out/Catalina/*.kext; do
             kextname="`basename $kext`"
             if [[ "`echo $kextname | grep -E $KEXTS`" != "" ]]; then
                 cp -R $kext ../kexts
