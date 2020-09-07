@@ -39,6 +39,7 @@ cd ./download
 mkdir ./zips && cd ./zips
 download_github "acidanthera/Lilu" "RELEASE" "acidanthera-Lilu.zip"
 download_github "acidanthera/AppleALC" "RELEASE" "acidanthera-AppleALC.zip"
+download_github "acidanthera/CPUFriend" "RELEASE" "acidanthera-CPUFriend.zip"
 download_github "acidanthera/HibernationFixup" "RELEASE" "acidanthera-HibernationFixup.zip"
 download_github "acidanthera/NVMeFix" "RELEASE" "acidanthera-NVMeFix.zip"
 download_github "acidanthera/VirtualSMC" "RELEASE" "acidanthera-VirtualSMC.zip"
@@ -53,7 +54,7 @@ download_RHM os-x-null-ethernet RehabMan-NullEthernet
 
 cd ..
 
-KEXTS="Lilu|AppleALC|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|Fixup"
+KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|Fixup"
 
 function check_directory
 {
