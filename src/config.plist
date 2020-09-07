@@ -287,7 +287,7 @@
 				<key>Comment</key>
 				<string>rename Method(GPRW,2,N) to XPRW, pair with SSDT-GPRW.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -313,7 +313,7 @@
 				<key>Comment</key>
 				<string>rename Method(XBIF,0,N) to YBIF, pair with SSDT-BATT.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -339,7 +339,7 @@
 				<key>Comment</key>
 				<string>rename Method(XBIX,0,N) to YBIX, pair with SSDT-BATT.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -365,7 +365,7 @@
 				<key>Comment</key>
 				<string>rename Method(XBST,0,N) to YBST, pair with SSDT-BATT.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -391,7 +391,7 @@
 				<key>Comment</key>
 				<string>Set Mutex BATM SyncLevel 0x01 to 0x00</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -417,7 +417,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_Q50,0,NS) to XQ50, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -443,7 +443,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_Q51,0,NS) to XQ51, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -469,7 +469,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_Q36,0,NS) to XQ36, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -495,7 +495,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_Q37,0,NS) to XQ37, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -521,7 +521,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_Q72,0,NS) to XQ72, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -547,7 +547,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_QFF,0,NS) to XQFF, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
@@ -573,7 +573,7 @@
 				<key>Comment</key>
 				<string>Rename Method(_Q34,0,NS) to XQ34, pair with SSDT-FN.aml</string>
 				<key>Count</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>Enabled</key>
 				<true/>
 				<key>Find</key>
