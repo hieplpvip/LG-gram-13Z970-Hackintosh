@@ -1,25 +1,30 @@
 #define GOV_TLED        0x2020008
 #define WM_GET          1
 #define WM_SET          2
-#define WM_KEY_LIGHT    0x400
-#define WM_TLED         0x404
-#define WM_FN_LOCK      0x407
-#define WM_BATT_LIMIT   0x61
-#define WM_READER_MODE  0xBF
-#define WM_FAN_MODE	   0x33
-#define WMBB_USB_CHARGE 0x10B
-#define WMBB_BATT_LIMIT 0x10C
+#define WM_KEY_LIGHT        0x400
+#define WM_TLED             0x404
+#define WM_FN_LOCK          0x407
+#define WM_BATT_LIMIT       0x61
+#define WM_READER_MODE      0xBF
+#define WM_FAN_MODE	        0x33
+#define WMBB_USB_CHARGE     0x10B
+#define WMBB_BATT_LIMIT     0x10C
 
-#define KEY_FNF1        0x70
-#define KEY_FNF5        0x74
+#define KEY_FNF1            0x70
+#define KEY_FNF5            0x74
 
-#define KEY_F14         0x0405
-#define KEY_F15         0x0406
-#define KEY_F16         0x0367
-#define KEY_F17         0x0368
-#define KEY_F18         0x0369
-#define KEY_F19         0x036A
-#define KEY_F20         0x036B
+#define KEY_F14             0x0405
+#define KEY_F15             0x0406
+#define KEY_F16             0x0367
+#define KEY_F17             0x0368
+#define KEY_F18             0x0369
+#define KEY_F19             0x036A
+#define KEY_F20             0x036B
+
+#define KEY_LSHIFT_DOWN     0x012a
+#define KEY_LSHIFT_UP       0x01aa
+#define KEY_RSHIFT_DOWN     0x0136
+#define KEY_RSHIFT_UP       0x01b6
 
 DefinitionBlock ("", "SSDT", 2, "HIEP", "FN", 0)
 {
@@ -70,6 +75,40 @@ DefinitionBlock ("", "SSDT", 2, "HIEP", "FN", 0)
             If (LGEC)
             {
                 Notify(\_SB.PCI0.LPCB.PS2K, KEY_F16)
+            }
+        }
+
+        Method (_Q30, 0, NotSerialized) // Fn + F8
+        {
+            If (LGEC)
+            {
+                Local0 = \XINI.WMAB(WM_KEY_LIGHT, WM_GET, 0)
+                CreateDWordField (Local0, Zero, RVAL)
+                Local1 = RVAL & 0xf
+                If (Local1 == 4)
+                {
+                    // Backlight Bright
+                    // Send Left Shift + F19
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_LSHIFT_DOWN)
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_F19)
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_LSHIFT_UP)
+                }
+                ElseIf (Local1 == 2)
+                {
+                    // Backlight Dimmed
+                    // Send Right Shift + F16
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_RSHIFT_DOWN)
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_F16)
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_RSHIFT_UP)
+                }
+                Else
+                {
+                    // Backlight Off
+                    // Send Left Shift + F16
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_LSHIFT_DOWN)
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_F16)
+                    Notify(\_SB.PCI0.LPCB.PS2K, KEY_LSHIFT_UP)
+                }
             }
         }
 

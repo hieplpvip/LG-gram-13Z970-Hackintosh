@@ -83,11 +83,11 @@ DefinitionBlock ("", "SSDT", 2, "HIEP", "ECDEBUG", 0)
             \RMDT.P1 ("EC-DEBUG: _Q20 is called")
             \_SB.PCI0.LPCB.H_EC.XQ20()
         }
-        Method (_Q30, 0, NotSerialized)
-        {
-            \RMDT.P1 ("EC-DEBUG: _Q30 is called")
-            \_SB.PCI0.LPCB.H_EC.XQ30()
-        }
+        //Method (_Q30, 0, NotSerialized)
+        //{
+        //    \RMDT.P1 ("EC-DEBUG: _Q30 is called")
+        //    \_SB.PCI0.LPCB.H_EC.XQ30()
+        //}
         Method (_Q7B, 0, NotSerialized)
         {
             \RMDT.P1 ("EC-DEBUG: _Q7B is called")
