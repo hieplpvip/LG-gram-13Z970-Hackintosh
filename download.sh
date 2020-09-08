@@ -32,6 +32,14 @@ function download_RHM()
     echo
 }
 
+function download_raw()
+{
+    echo "downloading $2"
+    echo $1
+    curl $curl_options --output "$2" "$1"
+    echo
+}
+
 rm -rf download && mkdir ./download
 cd ./download
 
@@ -51,7 +59,11 @@ download_github "usr-sse2/Black80211-Catalina" "alpha" "usr-sse2-Black80211-Cata
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
 download_RHM os-x-null-ethernet RehabMan-NullEthernet
+cd ..
 
+# download drivers
+mkdir ./drivers && cd ./drivers
+download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
 KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|Fixup"

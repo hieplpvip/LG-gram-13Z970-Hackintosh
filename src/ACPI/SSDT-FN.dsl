@@ -19,6 +19,7 @@
 #define KEY_F17         0x0368
 #define KEY_F18         0x0369
 #define KEY_F19         0x036A
+#define KEY_F20         0x036B
 
 DefinitionBlock ("", "SSDT", 2, "HIEP", "FN", 0)
 {
@@ -50,7 +51,10 @@ DefinitionBlock ("", "SSDT", 2, "HIEP", "FN", 0)
 
         Method (_Q34, 0, NotSerialized) // Fn + F4
         {
-            // Do nothing for now
+            If (LGEC)
+            {
+                Notify (\_SB.PCI0.LPCB.PS2K, KEY_F20)
+            }
         }
 
         Method (_Q36, 0, NotSerialized) // Fn + F6

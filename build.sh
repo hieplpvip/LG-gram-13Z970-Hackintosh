@@ -23,7 +23,7 @@ $IASL build/ACPI/SSDT-SBUS-MCHC.aml $SRCACPI/SSDT-SBUS-MCHC.dsl
 $IASL build/ACPI/SSDT-XOSI.aml $SRCACPI/SSDT-XOSI.dsl
 
 # Copy UEFI Drivers
-cp -R src/Drivers build/Drivers
+cp -R download/drivers build/Drivers
 
 # Copy kexts
 cp -R download/kexts build/Kexts
