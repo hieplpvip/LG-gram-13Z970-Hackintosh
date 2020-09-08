@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Debug EC events (_QXX)
+# 0: disabled
+# 1: enabled
+ECDEBUG=0
+
 IASL='./tools/iasl -vw 3073 -vi -vr -p'
 SRCACPI='src/ACPI'
 
@@ -37,3 +42,10 @@ cp src/config.plist build/config.plist
 sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
           -e "s/Serial_PLACEHOLDER/$SystemSerialNumber/" \
           -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" build/config.plist
+
+if [[ $ECDEBUG -eq 1 ]]; then
+  $IASL build/ACPI/SSDT-EC-Debug.aml $SRCACPI/SSDT-EC-Debug.dsl
+  ./tools/merge_plist.sh "ACPI:Add" src/config-debug.plist build/config.plist
+  ./tools/merge_plist.sh "ACPI:Patch" src/config-debug.plist build/config.plist
+  ./tools/merge_plist.sh "Kernel:Add" src/config-debug.plist build/config.plist
+fi

@@ -18,7 +18,7 @@ function download_github()
     echo
 }
 
-# download release from RehabMan bitbucket
+# download latest release from RehabMan bitbucket
 function download_RHM()
 # $1 is subdir on rehabman bitbucket
 # $2 is prefix of zip file name
@@ -59,6 +59,7 @@ download_github "usr-sse2/Black80211-Catalina" "alpha" "usr-sse2-Black80211-Cata
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
 download_RHM os-x-null-ethernet RehabMan-NullEthernet
+download_RHM os-x-acpi-debug RehabMan-Debug
 cd ..
 
 # download drivers
@@ -66,7 +67,7 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
-KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|Fixup"
+KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|ACPIDebug|Fixup"
 
 function check_directory
 {
