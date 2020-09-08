@@ -44,6 +44,7 @@ sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
           -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" build/config.plist
 
 if [[ $ECDEBUG -eq 1 ]]; then
+  $IASL build/ACPI/SSDT-RMDT.aml $SRCACPI/SSDT-RMDT.dsl
   $IASL build/ACPI/SSDT-EC-Debug.aml $SRCACPI/SSDT-EC-Debug.dsl
   ./tools/merge_plist.sh "ACPI:Add" src/config-debug.plist build/config.plist
   ./tools/merge_plist.sh "ACPI:Patch" src/config-debug.plist build/config.plist

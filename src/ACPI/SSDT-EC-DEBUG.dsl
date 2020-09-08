@@ -39,8 +39,7 @@ DefinitionBlock ("", "SSDT", 2, "HIEP", "ECDEBUG", 0)
     External (_SB.PCI0.LPCB.H_EC.XQ76, MethodObj)
     External (_SB.PCI0.LPCB.H_EC.XQ79, MethodObj)
     External (_SB.PCI0.LPCB.H_EC.XQ7A, MethodObj)
-    External (RMDT.P1__, MethodObj)
-    External (RMDT.P2__, MethodObj)
+    External (RMDT.P1, MethodObj)
 
     Scope (_SB.PCI0.LPCB.H_EC)
     {
