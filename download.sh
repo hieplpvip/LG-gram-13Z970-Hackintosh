@@ -55,6 +55,7 @@ download_github "BAndysc/VoodooPS2" "RELEASE" "BAndysc-VoodooPS2.zip"
 download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
 download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
 download_github "PMheart/LiluFriend" "RELEASE" "PMheart-LiluFriend.zip"
+download_github "hieplpvip/LGWMI" "RELEASE" "hieplpvip-LGWMI.zip"
 download_github "usr-sse2/Black80211-Catalina" "alpha" "usr-sse2-Black80211-Catalina.zip"
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
@@ -67,7 +68,7 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
-KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|ACPIDebug|Fixup"
+KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|NullEthernet.kext|Black80211.kext|itlwm.kext|LGWMI|ACPIDebug|Fixup"
 
 function check_directory
 {
