@@ -56,7 +56,6 @@ download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen
 download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
 download_github "PMheart/LiluFriend" "RELEASE" "PMheart-LiluFriend.zip"
 download_github "hieplpvip/LGWMI" "RELEASE" "hieplpvip-LGWMI.zip"
-download_github "usr-sse2/Black80211-Catalina" "alpha" "usr-sse2-Black80211-Catalina.zip"
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
 download_RHM os-x-null-ethernet RehabMan-NullEthernet
