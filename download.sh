@@ -54,7 +54,6 @@ download_github "acidanthera/VirtualSMC" "RELEASE" "acidanthera-VirtualSMC.zip"
 download_github "BAndysc/VoodooPS2" "RELEASE" "BAndysc-VoodooPS2.zip"
 download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
 download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
-download_github "PMheart/LiluFriend" "RELEASE" "PMheart-LiluFriend.zip"
 download_github "hieplpvip/LGWMI" "RELEASE" "hieplpvip-LGWMI.zip"
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
@@ -133,15 +132,6 @@ if [ $? -ne 0 ]; then
     done
 
     cd ..
-
-    for thefile in $( find kexts \( -type f -name Info.plist -not -path '*/Lilu.kext/*' -not -path '*/LiluFriend.kext/*' -print0 \) | xargs -0 grep -l '<key>as.vit9696.Lilu</key>' ); do
-        name="`/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' $thefile`"
-        version="`/usr/libexec/PlistBuddy -c 'Print :OSBundleCompatibleVersion' $thefile`"
-        if [[ -z "${version}" ]]; then
-            version="`/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' $thefile`"
-        fi
-        /usr/libexec/PlistBuddy -c "Add :OSBundleLibraries:$name string $version" kexts/LiluFriend.kext/Contents/Info.plist
-    done
 fi
 
 cd ..
