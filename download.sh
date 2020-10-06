@@ -11,7 +11,7 @@ function download_github()
 {
     echo "downloading `basename $3 .zip`:"
     curl $curl_options_silent --output /tmp/com.hieplpvip.download.txt "https://github.com/$1/releases/latest"
-    local url=https://github.com`grep -o -m 1 "/.*$2.*\.zip" /tmp/com.hieplpvip.download.txt`
+    local url=https://github.com`grep -o -m 1 "\"/$1/releases/.*$2.*\.zip\"" /tmp/com.hieplpvip.download.txt | cut -c2- | rev | cut -c2- | rev`
     echo $url
     curl $curl_options --output "$3" "$url"
     rm /tmp/com.hieplpvip.download.txt
@@ -43,20 +43,27 @@ function download_raw()
 rm -rf download && mkdir ./download
 cd ./download
 
+# download OpenCore
+mkdir ./oc && cd ./oc
+download_github "acidanthera/OpenCorePkg" "RELEASE" "OpenCorePkg.zip"
+unzip -q -d OpenCorePkg OpenCorePkg.zip
+cd ..
+
 # download kexts
 mkdir ./zips && cd ./zips
 download_github "acidanthera/Lilu" "RELEASE" "acidanthera-Lilu.zip"
 download_github "acidanthera/AppleALC" "RELEASE" "acidanthera-AppleALC.zip"
 download_github "acidanthera/CPUFriend" "RELEASE" "acidanthera-CPUFriend.zip"
+download_github "acidanthera/CpuTscSync" "RELEASE" "acidanthera-CpuTscSync.zip"
 download_github "acidanthera/HibernationFixup" "RELEASE" "acidanthera-HibernationFixup.zip"
 download_github "acidanthera/NVMeFix" "RELEASE" "acidanthera-NVMeFix.zip"
 download_github "acidanthera/VirtualSMC" "RELEASE" "acidanthera-VirtualSMC.zip"
-download_github "BAndysc/VoodooPS2" "RELEASE" "BAndysc-VoodooPS2.zip"
+download_github "acidanthera/VoodooPS2" "RELEASE" "acidanthera-VoodooPS2.zip"
 download_github "acidanthera/WhateverGreen" "RELEASE" "acidanthera-WhateverGreen.zip"
-download_github "lvs1974/CpuTscSync" "RELEASE" "lvs1974-CpuTscSync.zip"
-download_github "hieplpvip/LGWMI" "RELEASE" "hieplpvip-LGWMI.zip"
 download_github "OpenIntelWireless/itlwm" "AirportItlwm.*Catalina" "OpenIntelWireless-AirportItlwm.zip"
 download_github "OpenIntelWireless/IntelBluetoothFirmware" "IntelBluetooth" "OpenIntelWireless-IntelBluetoothFirmware.zip"
+download_github "hieplpvip/AppleBacklightSmoother" "RELEASE" "hieplpvip-AppleBacklightSmoother.zip"
+download_github "hieplpvip/LGWMI" "RELEASE" "hieplpvip-LGWMI.zip"
 download_github "cholonam/Sinetek-rtsx" "Sinetek-rtsx-" "cholonam-Sinetek-rtsx.zip"
 download_RHM os-x-null-ethernet RehabMan-NullEthernet
 download_RHM os-x-acpi-debug RehabMan-Debug
@@ -67,7 +74,7 @@ mkdir ./drivers && cd ./drivers
 download_raw https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi HfsPlus.efi
 cd ..
 
-KEXTS="Lilu|AppleALC|CPUFriend|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|CpuTscSync|NVMeFix|IntelBluetooth|Sinetek-rtsx|AirportItlwm|LGWMI|ACPIDebug|Fixup"
+KEXTS="Lilu|ACPIDebug|AppleALC|AppleBacklightSmoother|CPUFriend|CpuTscSync|IntelBluetooth|Itlwm|LGWMI|NullEthernet|NVMeFix|WhateverGreen|VirtualSMC|SMCBatteryManager|SMCLightSensor|SMCProcessor|VoodooPS2Controller|Sinetek-rtsx|Fixup"
 
 function check_directory
 {

@@ -10,43 +10,62 @@ SRCACPI='src/ACPI'
 
 rm -rf build && mkdir build
 
+# Copy OpenCore EFI folder
+cp -R download/oc/OpenCorePkg/X64/EFI build
+
+OCFOLDER="build/EFI/OC"
+
 # Build ACPI
-mkdir build/ACPI
-$IASL build/ACPI/SSDT-ALSD.aml $SRCACPI/SSDT-ALSD.dsl
-$IASL build/ACPI/SSDT-BATT.aml $SRCACPI/SSDT-BATT.dsl
-$IASL build/ACPI/SSDT-DMAC.aml $SRCACPI/SSDT-DMAC.dsl
-$IASL build/ACPI/SSDT-EC-USBX.aml $SRCACPI/SSDT-EC-USBX.dsl
-$IASL build/ACPI/SSDT-FN.aml $SRCACPI/SSDT-FN.dsl
-$IASL build/ACPI/SSDT-GPRW.aml $SRCACPI/SSDT-GPRW.dsl
-$IASL build/ACPI/SSDT-MEM2.aml $SRCACPI/SSDT-MEM2.dsl
-$IASL build/ACPI/SSDT-PLUG.aml $SRCACPI/SSDT-PLUG.dsl
-$IASL build/ACPI/SSDT-PMCR.aml $SRCACPI/SSDT-PMCR.dsl
-$IASL build/ACPI/SSDT-PNLF.aml $SRCACPI/SSDT-PNLF.dsl
-$IASL build/ACPI/SSDT-PPMC.aml $SRCACPI/SSDT-PPMC.dsl
-$IASL build/ACPI/SSDT-RMNE.aml $SRCACPI/SSDT-RMNE.dsl
-$IASL build/ACPI/SSDT-SBUS-MCHC.aml $SRCACPI/SSDT-SBUS-MCHC.dsl
-$IASL build/ACPI/SSDT-XOSI.aml $SRCACPI/SSDT-XOSI.dsl
+$IASL $OCFOLDER/ACPI/SSDT-ALSD.aml $SRCACPI/SSDT-ALSD.dsl
+$IASL $OCFOLDER/ACPI/SSDT-BATT.aml $SRCACPI/SSDT-BATT.dsl
+$IASL $OCFOLDER/ACPI/SSDT-DMAC.aml $SRCACPI/SSDT-DMAC.dsl
+$IASL $OCFOLDER/ACPI/SSDT-EC-USBX.aml $SRCACPI/SSDT-EC-USBX.dsl
+$IASL $OCFOLDER/ACPI/SSDT-FN.aml $SRCACPI/SSDT-FN.dsl
+$IASL $OCFOLDER/ACPI/SSDT-GPRW.aml $SRCACPI/SSDT-GPRW.dsl
+$IASL $OCFOLDER/ACPI/SSDT-MEM2.aml $SRCACPI/SSDT-MEM2.dsl
+$IASL $OCFOLDER/ACPI/SSDT-PLUG.aml $SRCACPI/SSDT-PLUG.dsl
+$IASL $OCFOLDER/ACPI/SSDT-PMCR.aml $SRCACPI/SSDT-PMCR.dsl
+$IASL $OCFOLDER/ACPI/SSDT-PNLF.aml $SRCACPI/SSDT-PNLF.dsl
+$IASL $OCFOLDER/ACPI/SSDT-PPMC.aml $SRCACPI/SSDT-PPMC.dsl
+$IASL $OCFOLDER/ACPI/SSDT-RMNE.aml $SRCACPI/SSDT-RMNE.dsl
+$IASL $OCFOLDER/ACPI/SSDT-SBUS-MCHC.aml $SRCACPI/SSDT-SBUS-MCHC.dsl
+$IASL $OCFOLDER/ACPI/SSDT-XOSI.aml $SRCACPI/SSDT-XOSI.dsl
 
 # Copy UEFI Drivers
-cp -R download/drivers build/Drivers
+cp -R download/drivers/* $OCFOLDER/Drivers/
 
 # Copy kexts
-cp -R download/kexts build/Kexts
-cp -R src/Kexts/* build/Kexts/
+cp -R download/kexts/* $OCFOLDER/Kexts/
+cp -R src/Kexts/* $OCFOLDER/Kexts/
 
 # Copy OpenCore config
-cp src/config.plist build/config.plist
+cp src/config.plist $OCFOLDER/config.plist
 
 # Replace SMBIOS
-. src/smbios.txt
+if [ -e src/smbios.txt ]; then
+    . src/smbios.txt
+else
+    . src/smbios-sample.txt
+fi
 sed -i "" -e "s/MLB_PLACEHOLDER/$MLB/" \
           -e "s/Serial_PLACEHOLDER/$SystemSerialNumber/" \
-          -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" build/config.plist
+          -e "s/SmUUID_PLACEHOLDER/$SystemUUID/" $OCFOLDER/config.plist
 
+# Remove unused UEFI Drivers
+find $OCFOLDER/Drivers ! -name AudioDxe.efi \
+                       ! -name HfsPlus.efi \
+                       ! -name OpenRuntime.efi -type f -delete
+
+# Remove unused UEFI Tools
+rm -rf $OCFOLDER/Tools
+
+# Build debug files if required
 if [[ $ECDEBUG -eq 1 ]]; then
   $IASL build/ACPI/SSDT-RMDT.aml $SRCACPI/SSDT-RMDT.dsl
   $IASL build/ACPI/SSDT-EC-Debug.aml $SRCACPI/SSDT-EC-Debug.dsl
   ./tools/merge_plist.sh "ACPI:Add" src/config-debug.plist build/config.plist
   ./tools/merge_plist.sh "ACPI:Patch" src/config-debug.plist build/config.plist
   ./tools/merge_plist.sh "Kernel:Add" src/config-debug.plist build/config.plist
+else
+  rm -rf $OCFOLDER/Kexts/ACPIDebug.kext
 fi
